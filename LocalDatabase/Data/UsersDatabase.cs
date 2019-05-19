@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using LocalDatabase.Model;
 using SQLite;
@@ -42,9 +43,17 @@ namespace LocalDatabase.Data
             }
         }
 
+        public Task<int> DeleteTableAsync<T>()
+        {
+            return database.DeleteAllAsync<T>();
+        }
+
         public Task<int> DeleteUserAsync(UserModel user)
         {
             return database.DeleteAsync(user);
+
         }
+
+
     }
 }

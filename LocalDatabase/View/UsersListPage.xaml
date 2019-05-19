@@ -2,28 +2,41 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:viewModels="clr-namespace:LocalDatabase.ViewModel"
-             x:Class="LocalDatabase.View.UsersListPage">
+             x:Class="LocalDatabase.View.UsersListPage"
+             x:Name="UsersPage">
     
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="+"/>
-    </ContentPage.ToolbarItems>
     
     
     <ContentPage.BindingContext>
         <viewModels:UsersListPageViewModel/>
     </ContentPage.BindingContext>
     
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="+" Command="{Binding AddCommand}"/>
+    </ContentPage.ToolbarItems>
+    
     <StackLayout>
         <StackLayout.Padding>
             <OnPlatform x:TypeArguments="Thickness"
                         iOS="0,20,0,0"/>
-        </StackLayout.Padding>
+        </StackLayout.Padding> 
         
+        <Button Text="Delete All"
+                Command="{Binding DeleteAllCommand}"/>
         
         <ListView ItemsSource="{Binding Users}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding Name}"/>
+                    <ViewCell Appearing="Handle_Appearing">
+                        <Label Text="{Binding Name}"/>
+                        <ViewCell.ContextActions>
+                            <MenuItem Text="Delete"
+                                      Command="{Binding Path=BindingContext.DeleteUserCommand, Source={x:Reference Name=UsersPage}}"
+                                      CommandParameter="{Binding .}"
+                                      IsDestructive="true"/>
+                        </ViewCell.ContextActions>
+                    </ViewCell>                    
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

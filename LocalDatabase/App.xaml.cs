@@ -17,20 +17,26 @@ namespace LocalDatabase
         {
             InitializeComponent();
 
-            InitilizeSomeUsers();
+           //InitUsers(); // shunchaki moteck userla qoshadi 10 ta
+
+
+            // user kiritmay rostanam database dan ochdimi yoqmi tekshiramiz
+
 
             MainPage = new NavigationPage( new UsersListPage());
         }
 
-        private void InitilizeSomeUsers()
+        private void InitUsers()
         {
-            for (int i = 0; i < 10; i++)
-                Database.SaveUserAsync(new UserModel()
-                {
-                    Name = "User " + (i + 1),
-                    Email = "Hello",
-                    Comment = "Hi"
-                });
+            for(int i=1;i<=10;i++)
+            {
+                Database.SaveUserAsync
+                    (
+                        new UserModel() { Name = "User" + i,
+                                           Email = "fsdf"
+                                        }
+                    );
+            }
         }
 
         // database property
