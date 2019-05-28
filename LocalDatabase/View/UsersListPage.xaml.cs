@@ -8,28 +8,10 @@ namespace LocalDatabase.View
 {
     public partial class UsersListPage : ContentPage
     {
-        public void Handle_Appearing(object sender, System.EventArgs e)
+
+        void Handle_Clicked_1(object sender, System.EventArgs e)
         {
-            try
-            {
-                var viewCell = (ViewCell)sender;
-                //viewCell.View.TranslateTo(150, 0, 1000, Easing.SinIn);
-
-            }
-            catch (Exception exception)
-            {
-
-                Console.WriteLine(exception.Message);
-            }
-        }
-
-        async void Handle_Clicked(object sender, System.EventArgs e)
-        {
-            await App.Database.DeleteTableAsync<UserModel>(); // deletes table
-
-            // UI ni ogohlantiradi ViewModel Orqali
-            var binding = (UsersListPageViewModel)this.BindingContext;
-            binding.InitUsers();
+            Navigation.PushAsync(new UserAddPage(this.BindingContext));
         }
 
         public UsersListPage()

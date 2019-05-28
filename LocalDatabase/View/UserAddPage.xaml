@@ -1,5 +1,15 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="LocalDatabase.View.UserAddPage">
-    <ContentPage.Content>
-    </ContentPage.Content>
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="LocalDatabase.View.UserAddPage">
+    
+    <Button HorizontalOptions="Center"
+            VerticalOptions="Center"
+            Text="ADD USER"
+            FontSize="30"
+            Clicked="Handle_Clicked"
+            BackgroundColor="Fuchsia"
+            Margin="20"
+            Padding="20"
+            TextColor="White"
+            FontAttributes="Bold"/>
 </ContentPage>

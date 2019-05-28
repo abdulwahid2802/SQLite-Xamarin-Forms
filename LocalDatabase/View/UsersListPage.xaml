@@ -13,7 +13,7 @@
     
     
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="+" Command="{Binding AddCommand}"/>
+        <ToolbarItem Text="+" Clicked="Handle_Clicked_1"/>
     </ContentPage.ToolbarItems>
     
     <StackLayout>
@@ -28,7 +28,7 @@
         <ListView ItemsSource="{Binding Users}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell Appearing="Handle_Appearing">
+                    <ViewCell>
                         <Label Text="{Binding Name}"/>
                         <ViewCell.ContextActions>
                             <MenuItem Text="Delete"
